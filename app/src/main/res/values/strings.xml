@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Users</string>
+    <string name="users_service_base_url" translatable="false">https://www.randomuser.me</string>
 </resources>
