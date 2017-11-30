@@ -18,6 +18,8 @@ android {
     }
 }
 
+final RETROFIT2_VERSION = '2.3.0'
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.android.support:appcompat-v7:26.1.0'
@@ -25,4 +27,7 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+
+    implementation "com.squareup.retrofit2:retrofit:${RETROFIT2_VERSION}"
+    implementation "com.squareup.retrofit2:converter-jackson:${RETROFIT2_VERSION}"
 }
