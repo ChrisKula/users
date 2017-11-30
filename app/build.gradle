@@ -19,6 +19,7 @@ android {
 }
 
 final RETROFIT2_VERSION = '2.3.0'
+final DAGGER_VERSION = '2.13'
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -30,4 +31,7 @@ dependencies {
 
     implementation "com.squareup.retrofit2:retrofit:${RETROFIT2_VERSION}"
     implementation "com.squareup.retrofit2:converter-jackson:${RETROFIT2_VERSION}"
+
+    implementation "com.google.dagger:dagger:${DAGGER_VERSION}"
+    annotationProcessor "com.google.dagger:dagger-compiler:${DAGGER_VERSION}"
 }
