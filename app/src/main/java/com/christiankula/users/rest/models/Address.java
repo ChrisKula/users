@@ -16,7 +16,7 @@ public class Address {
     private String state;
 
     @JsonProperty("postcode")
-    private int postcode;
+    private String postcode;
 
     @JsonProperty("street")
     public String getStreet() {
@@ -49,12 +49,12 @@ public class Address {
     }
 
     @JsonProperty("postcode")
-    public int getPostcode() {
+    public String getPostcode() {
         return postcode;
     }
 
     @JsonProperty("postcode")
-    public void setPostcode(int postcode) {
+    public void setPostcode(String postcode) {
         this.postcode = postcode;
     }
 }
