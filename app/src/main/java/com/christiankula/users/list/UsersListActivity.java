@@ -1,26 +1,41 @@
 package com.christiankula.users.list;
 
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
+import android.support.v4.content.ContextCompat;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.TextView;
 
 import com.christiankula.users.R;
 import com.christiankula.users.UsersApplication;
-import com.christiankula.users.rest.UsersService;
+import com.christiankula.users.rest.models.User;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class UsersListActivity extends AppCompatActivity {
+public class UsersListActivity extends AppCompatActivity implements UsersListMvp.View {
 
-
-    @Inject
-    UsersService usersService;
+    @BindView(R.id.srl_root_view)
+    SwipeRefreshLayout srlRootView;
 
     @BindView(R.id.rv_users)
     RecyclerView rvUsers;
+
+    @BindView(R.id.tv_no_users_found)
+    TextView tvNoUsersFound;
+
+    private UsersListMvp.Presenter usersListPresenter;
+
+    private UserAdapter userAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,5 +45,74 @@ public class UsersListActivity extends AppCompatActivity {
         ((UsersApplication) getApplication()).getComponent().inject(this);
 
         ButterKnife.bind(this);
+
+        initSwipeRefreshLayout();
+        initRecyclerView();
+
+        usersListPresenter.attachView(this);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        usersListPresenter.onResume();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        usersListPresenter.detachView();
+    }
+
+    @Inject
+    @Override
+    public void setPresenter(UsersListMvp.Presenter presenter) {
+        this.usersListPresenter = presenter;
+    }
+
+    @Override
+    public void showUsersList(List<User> users) {
+        tvNoUsersFound.setVisibility(View.GONE);
+
+        userAdapter.setData(users);
+        rvUsers.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void showNoUsersFoundMessage() {
+        rvUsers.setVisibility(View.GONE);
+
+        tvNoUsersFound.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void showInOfflineMode() {
+        Snackbar.make(findViewById(android.R.id.content), R.string.snackbar_alert_offline_mode, Snackbar.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void setRefreshing(boolean enable) {
+        srlRootView.setRefreshing(enable);
+    }
+
+    private void initSwipeRefreshLayout() {
+        srlRootView.setColorSchemeColors(ContextCompat.getColor(this, R.color.colorPrimary),
+                ContextCompat.getColor(this, R.color.colorAccent));
+
+        srlRootView.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                usersListPresenter.onRefresh();
+            }
+        });
+    }
+
+    private void initRecyclerView() {
+        userAdapter = new UserAdapter(new ArrayList<User>());
+
+        rvUsers.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+        rvUsers.setAdapter(userAdapter);
     }
 }
