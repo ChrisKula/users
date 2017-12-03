@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Users</string>
+    <string name="users_service_base_url" translatable="false">https://www.randomuser.me</string>
+    <string name="snackbar_alert_offline_mode">Offline mode</string>
+    <string name="error_message_no_users_found">No users found</string>
 </resources>
