@@ -1,9 +1,9 @@
 package com.christiankula.users.list;
 
-import com.christiankula.users.mvp.BasePresenter;
-import com.christiankula.users.mvp.BaseView;
 import com.christiankula.users.list.rest.models.User;
 import com.christiankula.users.list.rest.models.UsersResult;
+import com.christiankula.users.mvp.BasePresenter;
+import com.christiankula.users.mvp.BaseView;
 
 import java.util.List;
 
@@ -15,6 +15,8 @@ public interface UsersListMvp {
         void getUsers(Callback<UsersResult> callback);
 
         List<User> getUsersFromCache();
+
+        void saveUsers(List<User> users);
     }
 
     interface View extends BaseView<Presenter> {

@@ -54,6 +54,7 @@ public class UsersListPresenter implements UsersListMvp.Presenter, Callback<User
             if (users == null || users.isEmpty()) {
                 usersListView.showNoUsersFoundMessage();
             } else {
+                usersListModel.saveUsers(users);
                 usersListView.showUsersList(users);
             }
 
