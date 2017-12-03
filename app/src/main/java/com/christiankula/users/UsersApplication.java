@@ -7,10 +7,30 @@ import com.christiankula.users.injection.components.UsersAppComponent;
 import com.christiankula.users.injection.modules.ApplicationModule;
 import com.christiankula.users.injection.modules.NetworkModule;
 
+import io.realm.Realm;
+import io.realm.RealmConfiguration;
+
 
 public class UsersApplication extends Application {
 
     private final UsersAppComponent component = createUsersAppComponent();
+
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        initRealm();
+    }
+
+    private void initRealm() {
+        Realm.init(this);
+
+        RealmConfiguration realmConfiguration = new RealmConfiguration.Builder()
+                .deleteRealmIfMigrationNeeded()
+                .build();
+
+        Realm.setDefaultConfiguration(realmConfiguration);
+    }
 
     protected UsersAppComponent createUsersAppComponent() {
         return DaggerApplicationComponent.builder()
