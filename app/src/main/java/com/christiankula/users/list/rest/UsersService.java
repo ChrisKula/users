@@ -1,7 +1,7 @@
-package com.christiankula.users.rest;
+package com.christiankula.users.list.rest;
 
 
-import com.christiankula.users.rest.models.UsersResult;
+import com.christiankula.users.list.rest.models.UsersResult;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

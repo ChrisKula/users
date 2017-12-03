@@ -3,7 +3,7 @@ package com.christiankula.users.injection.modules;
 import android.content.Context;
 
 import com.christiankula.users.R;
-import com.christiankula.users.rest.UsersService;
+import com.christiankula.users.list.rest.UsersService;
 
 import javax.inject.Named;
 import javax.inject.Singleton;

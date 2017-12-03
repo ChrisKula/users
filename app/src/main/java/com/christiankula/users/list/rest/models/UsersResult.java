@@ -1,4 +1,4 @@
-package com.christiankula.users.rest.models;
+package com.christiankula.users.list.rest.models;
 
 
 import com.fasterxml.jackson.annotation.JsonInclude;

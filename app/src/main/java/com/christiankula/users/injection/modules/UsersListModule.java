@@ -3,7 +3,7 @@ package com.christiankula.users.injection.modules;
 import com.christiankula.users.list.UsersListModel;
 import com.christiankula.users.list.UsersListMvp;
 import com.christiankula.users.list.UsersListPresenter;
-import com.christiankula.users.rest.UsersService;
+import com.christiankula.users.list.rest.UsersService;
 
 import javax.inject.Singleton;
 

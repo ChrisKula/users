@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.christiankula.users.R;
-import com.christiankula.users.rest.models.User;
+import com.christiankula.users.list.rest.models.User;
 
 import java.util.ArrayList;
 import java.util.List;

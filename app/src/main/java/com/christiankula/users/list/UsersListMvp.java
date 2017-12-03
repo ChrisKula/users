@@ -2,8 +2,8 @@ package com.christiankula.users.list;
 
 import com.christiankula.users.mvp.BasePresenter;
 import com.christiankula.users.mvp.BaseView;
-import com.christiankula.users.rest.models.User;
-import com.christiankula.users.rest.models.UsersResult;
+import com.christiankula.users.list.rest.models.User;
+import com.christiankula.users.list.rest.models.UsersResult;
 
 import java.util.List;
 

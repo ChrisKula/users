@@ -1,8 +1,8 @@
 package com.christiankula.users.list;
 
-import com.christiankula.users.rest.UsersService;
-import com.christiankula.users.rest.models.User;
-import com.christiankula.users.rest.models.UsersResult;
+import com.christiankula.users.list.rest.UsersService;
+import com.christiankula.users.list.rest.models.User;
+import com.christiankula.users.list.rest.models.UsersResult;
 
 import java.util.ArrayList;
 import java.util.List;
