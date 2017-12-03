@@ -3,8 +3,12 @@ package com.christiankula.users.list.rest.models;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import io.realm.RealmModel;
+import io.realm.annotations.RealmClass;
+
+@RealmClass
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class Name {
+public class Name implements RealmModel{
 
     @JsonProperty("title")
     private String title;
