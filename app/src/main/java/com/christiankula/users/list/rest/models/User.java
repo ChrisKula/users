@@ -26,7 +26,7 @@ public class User implements RealmModel {
     private Login login;
 
     @JsonProperty("registered")
-    private int registered;
+    private int registeredOn;
 
     @JsonProperty("dob")
     private int dateOfBirth;
@@ -97,13 +97,13 @@ public class User implements RealmModel {
     }
 
     @JsonProperty("registered")
-    public int getRegistered() {
-        return registered;
+    public int getRegisteredOn() {
+        return registeredOn;
     }
 
     @JsonProperty("registered")
-    public void setRegistered(int registered) {
-        this.registered = registered;
+    public void setRegisteredOn(int registeredOn) {
+        this.registeredOn = registeredOn;
     }
 
     @JsonProperty("dob")
