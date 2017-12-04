@@ -5,12 +5,14 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.christiankula.users.R;
 import com.christiankula.users.details.UserDetailsActivity;
 import com.christiankula.users.list.rest.models.User;
 import com.christiankula.users.utils.StringUtils;
+import com.squareup.picasso.Picasso;
 
 import org.parceler.Parcels;
 
@@ -45,6 +47,11 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
     public void onBindViewHolder(UserViewHolder holder, int position) {
         final User user = data.get(position);
 
+        Picasso.with(holder.ivProfilePictureThumbnail.getContext())
+                .load(user.getProfilePicture().getThumbnail())
+                .placeholder(R.drawable.ic_person_color_primary_24dp)
+                .into(holder.ivProfilePictureThumbnail);
+
         holder.tvFirstName.setText(StringUtils.capitalize(user.getName().getFirst()));
         holder.tvLastName.setText(StringUtils.capitalize(user.getName().getLast()));
 
@@ -67,6 +74,8 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
     }
 
     static class UserViewHolder extends RecyclerView.ViewHolder {
+        ImageView ivProfilePictureThumbnail;
+
         TextView tvFirstName;
         TextView tvLastName;
 
@@ -74,6 +83,8 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
 
         UserViewHolder(View itemView) {
             super(itemView);
+
+            ivProfilePictureThumbnail = itemView.findViewById(R.id.iv_user_profile_picture_thumbnail);
 
             tvFirstName = itemView.findViewById(R.id.tv_list_item_user_first_name);
             tvLastName = itemView.findViewById(R.id.tv_list_item_user_last_name);
