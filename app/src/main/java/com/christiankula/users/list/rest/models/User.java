@@ -26,10 +26,10 @@ public class User implements RealmModel {
     private Login login;
 
     @JsonProperty("registered")
-    private int registeredOn;
+    private long registeredOn;
 
     @JsonProperty("dob")
-    private int dateOfBirth;
+    private long dateOfBirth;
 
     @JsonProperty("phone")
     private String phoneNumber;
@@ -96,23 +96,29 @@ public class User implements RealmModel {
         this.login = login;
     }
 
+    /**
+     * Returns date of birth as epoch
+     */
     @JsonProperty("registered")
-    public int getRegisteredOn() {
+    public long getRegisteredOn() {
         return registeredOn;
     }
 
     @JsonProperty("registered")
-    public void setRegisteredOn(int registeredOn) {
+    public void setRegisteredOn(long registeredOn) {
         this.registeredOn = registeredOn;
     }
 
+    /**
+     * Returns date of birth as epoch
+     */
     @JsonProperty("dob")
-    public int getDateOfBirth() {
+    public long getDateOfBirth() {
         return dateOfBirth;
     }
 
     @JsonProperty("dob")
-    public void setDateOfBirth(int dateOfBirth) {
+    public void setDateOfBirth(long dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 
