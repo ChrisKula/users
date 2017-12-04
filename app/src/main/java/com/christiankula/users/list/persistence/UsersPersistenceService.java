@@ -24,7 +24,7 @@ public class UsersPersistenceService {
 
 
     public void saveUsers(final List<User> users){
-        realm.executeTransaction(new Realm.Transaction() {
+        realm.executeTransactionAsync(new Realm.Transaction() {
             @Override
             public void execute(Realm realm) {
                 realm.copyToRealmOrUpdate(users);
