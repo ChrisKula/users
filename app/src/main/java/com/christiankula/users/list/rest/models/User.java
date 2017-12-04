@@ -3,48 +3,51 @@ package com.christiankula.users.list.rest.models;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import org.parceler.Parcel;
+
 import io.realm.RealmModel;
 import io.realm.annotations.RealmClass;
 
+@Parcel
 @RealmClass
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class User implements RealmModel {
 
     @JsonProperty("gender")
-    private String gender;
+    String gender;
 
     @JsonProperty("name")
-    private Name name;
+    Name name;
 
     @JsonProperty("location")
-    private Address address;
+    Address address;
 
     @JsonProperty("email")
-    private String email;
+    String email;
 
     @JsonProperty("login")
-    private Login login;
+    Login login;
 
     @JsonProperty("registered")
-    private long registeredOn;
+    long registeredOn;
 
     @JsonProperty("dob")
-    private long dateOfBirth;
+    long dateOfBirth;
 
     @JsonProperty("phone")
-    private String phoneNumber;
+    String phoneNumber;
 
     @JsonProperty("cell")
-    private String cellphoneNumber;
+    String cellphoneNumber;
 
     @JsonProperty("id")
-    private Id id;
+    Id id;
 
     @JsonProperty("picture")
-    private ProfilePicture profilePicture;
+    ProfilePicture profilePicture;
 
     @JsonProperty("nat")
-    private String nationality;
+    String nationality;
 
     @JsonProperty("gender")
     public String getGender() {

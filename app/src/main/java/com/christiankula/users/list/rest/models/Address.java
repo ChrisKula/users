@@ -3,24 +3,27 @@ package com.christiankula.users.list.rest.models;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import org.parceler.Parcel;
+
 import io.realm.RealmModel;
 import io.realm.annotations.RealmClass;
 
+@Parcel
 @RealmClass
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class Address implements RealmModel{
+public class Address implements RealmModel {
 
     @JsonProperty("street")
-    private String street;
+    String street;
 
     @JsonProperty("city")
-    private String city;
+    String city;
 
     @JsonProperty("state")
-    private String state;
+    String state;
 
     @JsonProperty("postcode")
-    private String postcode;
+    String postcode;
 
     @JsonProperty("street")
     public String getStreet() {

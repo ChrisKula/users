@@ -3,21 +3,24 @@ package com.christiankula.users.list.rest.models;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import org.parceler.Parcel;
+
 import io.realm.RealmModel;
 import io.realm.annotations.RealmClass;
 
+@Parcel
 @RealmClass
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ProfilePicture implements RealmModel{
 
     @JsonProperty("large")
-    private String large;
+    String large;
 
     @JsonProperty("medium")
-    private String medium;
+    String medium;
 
     @JsonProperty("thumbnail")
-    private String thumbnail;
+    String thumbnail;
 
     @JsonProperty("large")
     public String getLarge() {

@@ -3,21 +3,24 @@ package com.christiankula.users.list.rest.models;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import org.parceler.Parcel;
+
 import io.realm.RealmModel;
 import io.realm.annotations.RealmClass;
 
+@Parcel
 @RealmClass
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Name implements RealmModel{
 
     @JsonProperty("title")
-    private String title;
+    String title;
 
     @JsonProperty("first")
-    private String first;
+    String first;
 
     @JsonProperty("last")
-    private String last;
+    String last;
 
     @JsonProperty("title")
     public String getTitle() {
