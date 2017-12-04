@@ -3,30 +3,33 @@ package com.christiankula.users.list.rest.models;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import org.parceler.Parcel;
+
 import io.realm.RealmModel;
 import io.realm.annotations.RealmClass;
 
+@Parcel
 @RealmClass
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class Login implements RealmModel{
+public class Login implements RealmModel {
 
     @JsonProperty("username")
-    private String username;
+    String username;
 
     @JsonProperty("password")
-    private String password;
+    String password;
 
     @JsonProperty("salt")
-    private String salt;
+    String salt;
 
     @JsonProperty("md5")
-    private String md5;
+    String md5;
 
     @JsonProperty("sha1")
-    private String sha1;
+    String sha1;
 
     @JsonProperty("sha256")
-    private String sha256;
+    String sha256;
 
     @JsonProperty("username")
     public String getUsername() {
@@ -86,5 +89,11 @@ public class Login implements RealmModel{
     @JsonProperty("sha256")
     public void setSha256(String sha256) {
         this.sha256 = sha256;
+    }
+
+    @Override
+    public String toString() {
+        return "username : " + username + "\n" +
+                "password : *********";
     }
 }

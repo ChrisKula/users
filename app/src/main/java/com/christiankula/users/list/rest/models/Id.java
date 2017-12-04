@@ -3,18 +3,21 @@ package com.christiankula.users.list.rest.models;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import org.parceler.Parcel;
+
 import io.realm.RealmModel;
 import io.realm.annotations.RealmClass;
 
+@Parcel
 @RealmClass
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class Id implements RealmModel{
+public class Id implements RealmModel {
 
     @JsonProperty("name")
-    private String name;
+    String name;
 
     @JsonProperty("value")
-    private String value;
+    String value;
 
     @JsonProperty("name")
     public String getName() {
@@ -34,5 +37,14 @@ public class Id implements RealmModel{
     @JsonProperty("value")
     public void setValue(String value) {
         this.value = value;
+    }
+
+    @Override
+    public String toString() {
+        if (name == null || name.isEmpty() || value == null || value.isEmpty()) {
+            return "NA";
+        }
+        return "Name : " + name + "\n" +
+                "Value : " + value;
     }
 }
