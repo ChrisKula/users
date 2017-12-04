@@ -38,4 +38,13 @@ public class Id implements RealmModel {
     public void setValue(String value) {
         this.value = value;
     }
+
+    @Override
+    public String toString() {
+        if (name == null || name.isEmpty() || value == null || value.isEmpty()) {
+            return "NA";
+        }
+        return "Name : " + name + "\n" +
+                "Value : " + value;
+    }
 }

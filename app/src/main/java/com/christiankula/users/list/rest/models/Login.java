@@ -90,4 +90,10 @@ public class Login implements RealmModel {
     public void setSha256(String sha256) {
         this.sha256 = sha256;
     }
+
+    @Override
+    public String toString() {
+        return "username : " + username + "\n" +
+                "password : *********";
+    }
 }

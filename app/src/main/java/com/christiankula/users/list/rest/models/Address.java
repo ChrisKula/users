@@ -64,4 +64,11 @@ public class Address implements RealmModel {
     public void setPostcode(String postcode) {
         this.postcode = postcode;
     }
+
+    @Override
+    public String toString() {
+        return street + "\n" +
+                postcode + " " + city + "\n" +
+                state;
+    }
 }
