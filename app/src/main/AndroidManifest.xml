@@ -21,6 +21,7 @@
         </activity>
         <activity
             android:name=".details.UserDetailsActivity"
+            android:label="@string/user_details_label"
             android:parentActivityName=".list.UsersListActivity" />
     </application>
 
