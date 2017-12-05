@@ -8,6 +8,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import org.parceler.Parcel;
 
 import io.realm.RealmModel;
+import io.realm.annotations.PrimaryKey;
 import io.realm.annotations.RealmClass;
 
 @Parcel
@@ -24,6 +25,7 @@ public class User implements RealmModel, Comparable<User> {
     @JsonProperty("location")
     Address address;
 
+    @PrimaryKey
     @JsonProperty("email")
     String email;
 
