@@ -19,7 +19,7 @@ public class UsersPersistenceService {
 
 
     public List<User> getUsers(){
-        return realm.where(User.class).findAll();
+        return realm.copyFromRealm(realm.where(User.class).findAll());
     }
 
 
