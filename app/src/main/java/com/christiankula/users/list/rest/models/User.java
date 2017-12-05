@@ -1,5 +1,7 @@
 package com.christiankula.users.list.rest.models;
 
+import android.support.annotation.NonNull;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -11,7 +13,7 @@ import io.realm.annotations.RealmClass;
 @Parcel
 @RealmClass
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class User implements RealmModel {
+public class User implements RealmModel, Comparable<User> {
 
     @JsonProperty("gender")
     String gender;
@@ -173,5 +175,16 @@ public class User implements RealmModel {
     @JsonProperty("nationality")
     public void setNationality(String nationality) {
         this.nationality = nationality;
+    }
+
+    @Override
+    public int compareTo(@NonNull User other) {
+        int diff = this.name.last.compareTo(other.name.last);
+
+        if (diff == 0) {
+            diff = this.name.first.compareTo(other.name.first);
+        }
+
+        return diff;
     }
 }
