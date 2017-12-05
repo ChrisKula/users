@@ -34,16 +34,40 @@ public class UsersListPresenter implements UsersListMvp.Presenter, Callback<User
     @Override
     public void detachView() {
         this.usersListView = null;
+
+        usersListModel.setCurrentDisplayedUsers(null);
     }
 
     @Override
     public void onResume() {
-        updateUsers();
+        List<User> users = usersListModel.getCurrentDisplayedUsers();
+
+        if (users == null || users.isEmpty()) {
+            usersListView.setRefreshing(true);
+
+            usersListModel.getUsers(this);
+        }
     }
 
     @Override
     public void onRefresh() {
-        updateUsers();
+        usersListModel.getUsers(this);
+    }
+
+    @Override
+    public void onSortByLastNameMenuItemClick() {
+        int sortOrder = usersListModel.getCurrentUsersSortOrder();
+
+        switch (sortOrder) {
+            case UsersListModel.SORT_UNSORTED:
+            case UsersListModel.SORT_DESCENDING:
+                usersListView.showUsersList(usersListModel.sortUsersList(UsersListModel.SORT_ASCENDING));
+                break;
+
+            case UsersListModel.SORT_ASCENDING:
+                usersListView.showUsersList(usersListModel.sortUsersList(UsersListModel.SORT_DESCENDING));
+                break;
+        }
     }
 
     @Override
@@ -54,8 +78,9 @@ public class UsersListPresenter implements UsersListMvp.Presenter, Callback<User
             if (users == null || users.isEmpty()) {
                 usersListView.showNoUsersFoundMessage();
             } else {
+                showUsers(users);
+
                 usersListModel.saveUsers(users);
-                usersListView.showUsersList(users);
             }
 
             usersListView.setRefreshing(false);
@@ -69,10 +94,10 @@ public class UsersListPresenter implements UsersListMvp.Presenter, Callback<User
         showUsersFromCache();
     }
 
-    private void updateUsers() {
-        usersListView.setRefreshing(true);
+    private void showUsers(List<User> users) {
+        usersListView.showUsersList(users);
 
-        usersListModel.getUsers(this);
+        usersListModel.setCurrentDisplayedUsers(users);
     }
 
     private void showUsersFromCache() {
@@ -82,7 +107,7 @@ public class UsersListPresenter implements UsersListMvp.Presenter, Callback<User
         if (users.isEmpty()) {
             usersListView.showNoUsersFoundMessage();
         } else {
-            usersListView.showUsersList(usersListModel.getUsersFromCache());
+            showUsers(users);
         }
 
         usersListView.setRefreshing(false);

@@ -17,6 +17,14 @@ public interface UsersListMvp {
         List<User> getUsersFromCache();
 
         void saveUsers(List<User> users);
+
+        List<User> sortUsersList(int sortOrder);
+
+        int getCurrentUsersSortOrder();
+
+        void setCurrentDisplayedUsers(List<User> currentDisplayedUsers);
+
+        List<User> getCurrentDisplayedUsers();
     }
 
     interface View extends BaseView<Presenter> {
@@ -33,5 +41,7 @@ public interface UsersListMvp {
         void onRefresh();
 
         void onResume();
+
+        void onSortByLastNameMenuItemClick();
     }
 }
