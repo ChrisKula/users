@@ -89,6 +89,12 @@ public class UserDetailsActivity extends AppCompatActivity implements UserDetail
         super.onDestroy();
     }
 
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
+
     @Inject
     @Override
     public void setPresenter(UserDetailsMvp.Presenter presenter) {
