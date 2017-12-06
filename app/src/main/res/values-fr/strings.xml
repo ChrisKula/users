@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Utilisateurs</string>
+    <string name="snackbar_alert_offline_mode">Mode hors-ligne</string>
+    <string name="error_message_no_users_found">Aucun utilisateur trouvé</string>
+    <string name="user_details_label">Détails de l\'utilisateur</string>
+    <string name="menu_item_sort_by_last_name">Trier par nom</string>
+</resources>
