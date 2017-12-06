@@ -29,6 +29,8 @@ final BUTTERKNIFE_VERSION = '8.8.1'
 final PICASSO_VERSION = '2.5.2'
 final PARCELER_VERSION = '1.1.9'
 
+final MOCKITO_VERSION = '2.11.0'
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
@@ -51,6 +53,8 @@ dependencies {
 
     implementation "org.parceler:parceler-api:${PARCELER_VERSION}"
     annotationProcessor "org.parceler:parceler:${PARCELER_VERSION}"
+
+    testImplementation "org.mockito:mockito-core:${MOCKITO_VERSION}"
 
     testImplementation 'junit:junit:4.12'
 
